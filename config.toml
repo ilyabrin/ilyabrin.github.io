@@ -1,5 +1,5 @@
-title = "My cool new Blog"
-baseURL = "https://example.com/"
+title = "Ilya Brin - blog"
+baseURL = "https://ilyabrin.github.io/"
 
 # Option 1 (recommended): adding the theme as a Hugo module
 theme = "github.com/Lednerb/bilberry-hugo-theme/v3"
@@ -146,8 +146,7 @@ disqusShortname = ""
     # all icons https://fontawesome.com/icons?d=gallery&m=free
     # brand icons https://fontawesome.com/icons?d=gallery&s=brands&m=free
     socialMediaLinks = [
-      { link = "https://twitter.com/TheRealLednerb", icon = "fab fa-twitter", rel = "me" },
-      { link = "https://github.com/Lednerb", icon = "fab fa-github" },
+      { link = "https://github.com/ilyabrin", icon = "fab fa-github" },
     ]
 
     # show an archive link in the footer
