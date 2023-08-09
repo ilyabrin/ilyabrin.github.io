@@ -60,7 +60,8 @@ nav {
                 display: flex;
 
                 &:hover {
-                    color: $bubble-hover-color;
+                    color: inherit;
+                    background-color: lighten($nav-background-color, 10);
                 }
             }
         }

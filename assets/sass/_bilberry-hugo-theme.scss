@@ -31,71 +31,40 @@
         }
     }
 
-    .highlight {
-        margin: 1em 0;
+    pre {
+        position: relative;
+        background: transparent !important;
 
-        div {
+        code {
+            padding: 1.0em;
+            font-size: 0.9em;
+            white-space: pre;
+            overflow-x: auto;
             border-radius: 4px;
         }
 
-        pre {
-            position: relative;
-            background: transparent;
-            border-radius: 4px;
-
-            code {
-                background-color: inherit;
-                font-family: "Fira Code", monospace;
-                border: 0;
-                margin: 0;
-                padding: 1.0em;
-                font-size: 0.9em;
-                white-space: pre;
-                overflow-x: auto;
-            }
-
-            .copy-button {
-                display: none;
-                position: absolute;
-                top: 5px;
-                right: 5px;
-                background: #f1f1f1;
-                padding: 4px;
-                font-size: 12pt;
-                line-height: normal;
-                height: auto;
-            }
-
-            &:hover .copy-button {
-                display: block;
-            }
+        .copy-button {
+            display: none;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #f1f1f1;
+            padding: 4px;
+            font-size: 12pt;
+            line-height: normal;
+            height: auto;
         }
 
-        td pre {
-            margin-bottom: 1em;
+        &:hover .copy-button {
+            display: block;
         }
+    }
 
-        td:first-child pre code {
-            padding: 0 0 0 1em;
-
-            &:hover .copy-button {
-                display: none;
-            }
-        }
-
-        td:first-child pre {
-            &:hover .copy-button {
-                display: none !important;
-            }
-
-            code {
-                padding: 0 0 0 1em;
-            }
-        }
-
-        td:nth-child(2) pre code {
-            padding: 0;
-        }
+    code {
+        font-family: "Fira Code", monospace;
+        border: 0;
+        margin: 0;
+        white-space: normal;
     }
 
     .tooltipster-light {
@@ -134,36 +103,6 @@
 
     .fa-youtube-adblock-proof:before {
         content: "\F167";
-    }
-
-    #back-to-top-button {
-        display: inline-block;
-        color: $page-background-color;
-        background-color: $base-color;
-        font-size: 2.5em;
-        line-height: 45px;
-        width: 45px;
-        height: 45px;
-        text-align: center;
-        border-radius: 4px;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        transition: background-color .3s,
-        opacity .5s, visibility .5s;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-    }
-
-    #back-to-top-button:hover {
-        cursor: pointer;
-        background-color: $highlight-color;
-    }
-
-    #back-to-top-button.show {
-        opacity: 1;
-        visibility: visible;
     }
 
     @import "topnav";
