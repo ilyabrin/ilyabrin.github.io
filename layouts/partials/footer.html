@@ -79,16 +79,16 @@
 <div class="credits">
     <div class="container">
         <div class="copyright">
-            <a href='{{ .Site.Params.copyrightUrl | default "https://github.com/ilyabrin" }}' target="_blank">
+            <a href="{{ .Site.Params.copyrightUrl | default "https://github.com/Lednerb" }}" target="_blank">
                 &copy;
                 {{ if .Site.Params.copyrightUseCurrentYear }}
                 {{ now.Year }}
-                {{ else if gt now.Year (.Site.Params.copyrightYearOverride | default 2010) }}
+                {{ else if gt now.Year (.Site.Params.copyrightYearOverride | default 2018) }}
                 {{ .Site.Params.copyrightYearOverride | default 2018 }} - {{ now.Year }}
                 {{ else }}
                 {{ .Site.Params.copyrightYearOverride | default 2018 }}
                 {{ end }}
-                {{ .Site.Params.copyrightBy | default "by Ilya Brin" }}
+                {{ .Site.Params.copyrightBy | default "by Lednerb" }}
             </a>
             {{ with  .OutputFormats.Get "rss" -}}
             -
@@ -96,7 +96,7 @@
             {{- end }}
         </div>
         <div class="author">
-            <a href='{{ .Site.Params.creditsUrl | default "https://github.com/Lednerb/bilberry-hugo-theme" }}'
+            <a href="{{ .Site.Params.creditsUrl | default "https://github.com/Lednerb/bilberry-hugo-theme" }}"
                 target="_blank">{{ .Site.Params.creditsText | default "Bilberry Hugo Theme" }}</a>
         </div>
     </div>
