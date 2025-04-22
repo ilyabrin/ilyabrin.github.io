@@ -4,7 +4,7 @@ date: 2025-04-21T14:04:14+01:00
 
 author: "Ilya Brin"
 categories: ['postgresql']
-tags: ['sql', 'pg', 'postgresql', 'databases', 'indexing', 'performance', 'optimization', 'vacuum'],
+tags: ['sql', 'pg', 'postgresql', 'databases', 'indexing', 'performance', 'optimization', 'vacuum']
 ---
 
 ## Что такое VACUUM в PostgreSQL?
