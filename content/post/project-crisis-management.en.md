@@ -33,9 +33,9 @@ Let's break down the **step-by-step algorithm** for crisis management in IT proj
 
 ### Types of IT crises
 
-**🔥 Technical crisis**
+#### Technical crisis 🔥
 
-```
+```txt
 Examples:
 - Architecture doesn't scale
 - Critical bug in production
@@ -43,9 +43,9 @@ Examples:
 - External API integration broke
 ```
 
-**🔥 Resource crisis**
+#### Resource crisis 🔥
 
-```
+```txt
 Examples:
 - Key developer quit
 - Budget exhausted at 60% of project
@@ -53,9 +53,9 @@ Examples:
 - Team overloaded with other tasks
 ```
 
-**🔥 Communication crisis**
+#### Communication crisis 🔥
 
-```
+```txt
 Examples:
 - Client drastically changed requirements
 - Conflict between teams
@@ -63,9 +63,9 @@ Examples:
 - Wrong understanding of tasks
 ```
 
-**🔥 Time crisis**
+#### Time crisis 🔥
 
-```
+```txt
 Examples:
 - Deadline moved a month earlier
 - Scope doubled
@@ -121,7 +121,7 @@ func HandleCrisis() {
 
 **Emergency call format:**
 
-```
+```txt
 Subject: URGENT - Project X crisis
 Time: Now, 15 minutes
 Goal: Situation assessment and action plan
@@ -172,7 +172,7 @@ func (cr *CrisisResponse) Stabilize() {
 
 **"5 Whys" technique:**
 
-```
+```txt
 Problem: Production is down
 Why? Server not responding
 Why? Out of memory
@@ -293,7 +293,7 @@ func (tr *TeamReallocation) OptimizeForCrisis() {
 
 **Crisis notification:**
 
-```
+```txt
 Subject: CRITICAL - Payment system issue
 
 What happened: Critical bug discovered in payment system at 2:30 PM
@@ -307,7 +307,7 @@ Contact for questions: [your phone]
 
 **Status update:**
 
-```
+```txt
 Crisis update - 4:30 PM
 
 Progress: Bug localized, fix being prepared
@@ -362,7 +362,7 @@ func (sm *StressManagement) MaintainTeamHealth() {
 
 **OODA Loop model:**
 
-```
+```txt
 Observe -> Orient -> Decide -> Act -> Repeat
 ```
 
