@@ -37,10 +37,10 @@ Let's break down the **step-by-step algorithm** for crisis management in IT proj
 
 ```
 Examples:
-- Critical bug in production
 - Architecture doesn't scale
-- External API integration broke
+- Critical bug in production
 - Database can't handle load
+- External API integration broke
 ```
 
 **🔥 Resource crisis**
