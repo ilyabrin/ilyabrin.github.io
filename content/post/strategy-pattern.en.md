@@ -1,6 +1,6 @@
 ---
 title: "Strategy Pattern in Go: Choosing Algorithm at Runtime"
-date: 2025-07-08T10:00:00+03:00
+date: 2025-08-17T10:00:00+03:00
 draft: false
 author: "Ilya Brin"
 tags: ["golang", "patterns", "design-patterns", "strategy"]
