@@ -17,7 +17,7 @@ disqusShortname = "bilberry-hugo-theme"
 
 # Enable / Disable open link with a new tab.
 [blackfriday]
-  hrefTargetBlank = false
+  hrefTargetBlank = true
 
 [params]
   # Custom CSS / JS modules that will be imported by the template.
@@ -29,7 +29,7 @@ disqusShortname = "bilberry-hugo-theme"
 
   # Description and meta data for the search engines
   author = "Ilya Brin"
-  description = "Blog of Software Engineer"
+  description = "Software Engineer's blog about Golang, DevOps, Cloud, and other interesting topics."
   keywords = "blog,personal,golang,go,software"
 
   # How many articles should be displayed at once?
@@ -54,7 +54,7 @@ disqusShortname = "bilberry-hugo-theme"
 
   # Header configuration
     # your subtitle if you want to use any
-    subtitle = "Hello World! History is written by the contribs!"
+    subtitle = "History is written by its contributors"
 
     # if you want to use gravatar for the header image
     gravatarEMail = "ilya@codeplay.ru"
