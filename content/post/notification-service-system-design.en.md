@@ -38,7 +38,7 @@ Let's break down how to design a `notification service` that can handle millions
 
 ### 🔥 System components
 
-```
+```sh
 ┌─────────────┐     ┌──────────────┐     ┌──────────────┐
 │   Clients   │>>>>>|     Gateway  │>>>>>│ Notification │
 │ (iOS/Web/   │     │   (WebSocket │     │    Service   │
