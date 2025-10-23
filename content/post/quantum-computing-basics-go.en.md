@@ -155,9 +155,10 @@ func (q *Qubit) Hadamard() {
 
 > Changes the phase of the |1⟩ state by angle θ.
 >
-> Phase affects interference in multi-qubit systems.
-> Interference is key to quantum advantage.
-> Quantum advantage is when a quantum computer solves problems faster than a classical one.
+> Phase affects interference in multi-qubit systems.  
+> Interference is key to quantum advantage.  
+>
+> Quantum advantage is when a quantum computer solves problems faster than a classical one.  
 > So understanding phases is important!
 
 ```go
