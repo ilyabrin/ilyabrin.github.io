@@ -3,8 +3,8 @@ title: "Как избежать проблем с блокировками в Po
 date: 2025-04-25T14:00:14+01:00
 
 author: "Ilya Brin"
-categories: ['database', 'postgresql', 'performance']
-tags: ['postgresql', 'pg', 'sql', 'locks', 'tips & tricks', 'performance', 'database', 'optimization']
+categories: ['database', 'postgresql', 'performance', 'optimization']
+tags: ['postgresql', 'pg', 'sql', 'locks', 'tips & tricks', 'performance', 'database', 'optimization', 'deadlocks']
 ---
 
 **Блокировки (locks)** в PostgreSQL - это механизм, который обеспечивает согласованность данных при параллельных операциях. Однако неправильное управление ими может привести к **дедлокам (deadlocks)**, **долгим транзакциям** и **простою приложений**.  
