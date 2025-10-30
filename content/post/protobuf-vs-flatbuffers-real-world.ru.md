@@ -1,5 +1,5 @@
 ---
-title: "Protobuf vs FlatBuffers: когда скорость важнее размера"
+title: "Protobuf или FlatBuffers: что выбрать?"
 date: 2025-05-10T14:04:14+01:00
 
 author: "Ilya Brin"
@@ -7,7 +7,8 @@ categories: ['postgresql']
 tags: ['protobuf', 'api', 'performance', 'optimization', 'flatbuffers']
 ---
 
-Привет, performance-инженер! ⚡  
+Привет, performance-инженер! ⚡
+
 JSON API тормозит под нагрузкой? MessagePack уже не спасает? Пора переходить на серьёзную артиллерию — бинарные протоколы сериализации.
 
 Пока другие спорят о красоте JSON, мы разберемся, когда Protobuf идеален для микросервисов, а FlatBuffers — для игр и real-time систем.  
