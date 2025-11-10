@@ -1,6 +1,6 @@
 ---
 title: "Как перестать волноваться о своем коде и стать x10 разработчиком"
-date: 2025-06-15T05:55:00+03:00
+date: 2025-10-11T05:55:00+03:00
 draft: false
 author: "Ilya Brin"
 tags: ["career", "productivity", "mindset", "soft-skills"]
