@@ -12,6 +12,10 @@ DefaultContentLanguage = "en"
 # Enable / Disable Google Analytics statistics for your site
 googleAnalytics = ""
 
+# Enable / Disable Yandex Metrica statistics for your site
+# Get your counter ID from https://metrica.yandex.com/
+# yandexMetricaId = ""
+
 # Enable / Disable comments on the articles via Disqus.
 disqusShortname = "bilberry-hugo-theme"
 
@@ -31,6 +35,10 @@ disqusShortname = "bilberry-hugo-theme"
   author = "Ilya Brin"
   description = "Software Engineer's blog about Golang, DevOps, Cloud, and other interesting topics."
   keywords = "blog,personal,golang,go,software"
+
+  # Yandex Metrica counter ID (optional)
+  # Uncomment and add your counter ID from https://metrica.yandex.com/
+  yandexMetricaId = "105207463"
 
   # How many articles should be displayed at once?
   paginate = 7
