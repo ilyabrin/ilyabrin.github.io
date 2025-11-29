@@ -9,6 +9,8 @@ categories: ["Patterns"]
 
 `Factory Pattern` solves one problem: how to create objects without being tied to concrete types. Instead of directly calling a constructor, use a factory function that decides which object to create.
 
+<!--more-->
+
 ## Problem: Tight Coupling to Types
 
 Without a factory, code is tied to concrete types:
