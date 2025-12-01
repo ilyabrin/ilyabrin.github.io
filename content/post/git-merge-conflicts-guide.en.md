@@ -7,7 +7,7 @@ tags: ["git", "workflow", "team", "best-practices", "version-control", "merge-co
 categories: ["Development"]
 ---
 
-Merge conflicts are every team's pain point. Everyone writes code, everything works, but when it's time to merge branches — chaos begins. Conflicts, lost commits, hours spent understanding someone else's code.
+Merge conflicts are every team's pain point. Everyone writes code, everything works, but when it's time to merge branches - chaos begins. Conflicts, lost commits, hours spent understanding someone else's code.
 
 But conflicts aren't a technical problem. They're a process problem. Let's explore how to avoid them.
 
@@ -22,7 +22,7 @@ Conflicts appear when:
 - No synchronization with main
 - No git workflow rules
 
-If conflicts happen constantly — you have process problems, not git problems.
+If conflicts happen constantly - you have process problems, not git problems.
 
 ## Practices That Help
 
@@ -67,11 +67,11 @@ Format: `type/short-description`
 
 Types:
 
-- `feat` — new functionality
-- `fix` — bug fix
-- `refactor` — refactoring
-- `docs` — documentation
-- `test` — tests
+- `feat` - new functionality
+- `fix` - bug fix
+- `refactor` - refactoring
+- `docs` - documentation
+- `test` - tests
 
 ### 3. Rebase Before Merge
 
@@ -105,7 +105,7 @@ This prevents accumulation of changes and simplifies conflict resolution.
 
 ### 5. Separation of Responsibilities
 
-If two developers constantly change the same files — that's a problem:
+If two developers constantly change the same files - that's a problem:
 
 ```go
 // Bad: everyone touches one file
@@ -120,7 +120,7 @@ If two developers constantly change the same files — that's a problem:
 Solution:
 
 - Agree on responsibility zones
-- If changes overlap — synchronize before merge
+- If changes overlap - synchronize before merge
 - Use CODEOWNERS file
 
 ### 6. Configure .gitattributes
@@ -212,7 +212,7 @@ Or use husky/lefthook.
 
 ### Don't Merge Without Understanding
 
-"It's just a couple lines" — words before production breaks.
+"It's just a couple lines" - words before production breaks.
 
 Always understand what you're merging.
 
