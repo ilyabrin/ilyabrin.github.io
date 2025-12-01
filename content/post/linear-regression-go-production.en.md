@@ -1,19 +1,18 @@
 ---
 title: "Linear Regression in Go: From Zero to Production"
 date: 2025-04-28T14:04:14+01:00
-
 author: "Ilya Brin"
-categories: ['golang', 'machine-learning']
 tags: ['go', 'golang', 'machine-learning', 'linear-regression', 'math', 'statistics', 'production', 'algorithms']
+categories: ['golang', 'machine-learning']
 ---
 
 Hey Go developer!
 
 📊 Think machine learning is only for Python developers? Want to add predictive analytics to your Go service but afraid of math?
 
-While others import sklearn, you'll learn how to implement linear regression in Go from scratch and take it to production-ready solution.
+While others import `sklearn`, you'll learn how to implement linear regression in Go from scratch and take it to production-ready solution.
 
----
+<!--more-->
 
 ## 1. What is Linear Regression and Why Does a Go Developer Need It?
 
@@ -23,10 +22,10 @@ Linear regression is a way to find a straight line that best describes the relat
 
 **Real use cases in Go services:**
 
-- **Load forecasting** — how many servers do we need tomorrow?
-- **Pricing** — what price to set for a product?
-- **Monitoring** — when will the disk be full?
-- **A/B testing** — does the change affect conversion?
+- **Pricing** - what price to set for a product?
+- **Monitoring** - when will the disk be full?
+- **A/B testing** - does the change affect conversion?
+- **Load forecasting** - how many servers do we need tomorrow?
 
 ### Math without fear
 
@@ -34,15 +33,13 @@ Linear regression is a way to find a straight line that best describes the relat
 y = a*x + b
 
 where:
-y — what we predict (price, load)
-x — what we know (time, number of users)  
-a — line slope (coefficient)
-b — Y-axis intercept (constant)
+y - what we predict (price, load)
+x - what we know (time, number of users)  
+a - line slope (coefficient)
+b - Y-axis intercept (constant)
 ```
 
 **Task:** find optimal values for `a` and `b`.
-
----
 
 ## 2. Implementation from Scratch in Go
 
@@ -219,8 +216,6 @@ Model trained: y = 25.45x + 245.45
 R² = 0.756, RMSE = 187.32
 Forecast for 14:00: 601 RPS
 ```
-
----
 
 ## 4. Production-Ready Version
 
@@ -421,17 +416,17 @@ func BenchmarkPredict(b *testing.B) {
 
 ### Use linear regression when
 
-✅ **Simple dependencies** — one variable affects another  
-✅ **Fast predictions** — need results in microseconds  
-✅ **Interpretability** — important to understand how the model works  
-✅ **Little data** — works even on small samples  
+✅ **Simple dependencies** - one variable affects another  
+✅ **Fast predictions** - need results in microseconds  
+✅ **Interpretability** - important to understand how the model works  
+✅ **Little data** - works even on small samples  
 
 ### Avoid when
 
-❌ **Non-linear dependencies** — complex patterns in data  
-❌ **Many variables** — use multiple regression  
-❌ **Categorical data** — need logistic regression  
-❌ **Time series** — better use ARIMA or exponential smoothing  
+❌ **Non-linear dependencies** - complex patterns in data  
+❌ **Many variables** - use multiple regression  
+❌ **Categorical data** - need logistic regression  
+❌ **Time series** - better use ARIMA or exponential smoothing  
 
 ## 7. Production Tips
 
@@ -483,10 +478,10 @@ func (s *MLService) scheduleRetraining() {
 
 Linear regression in Go is:
 
-✅ **Simple implementation** — 100 lines of code for a full model  
-✅ **High performance** — predictions in microseconds  
-✅ **Production-ready** — easily integrates into existing services  
-✅ **Understandable** — you can explain to business how it works  
+✅ **Simple implementation** - 100 lines of code for a full model  
+✅ **High performance** - predictions in microseconds  
+✅ **Production-ready** - easily integrates into existing services  
+✅ **Understandable** - you can explain to business how it works  
 
 **Main rule:**
 > You don't need Python for simple ML. Go handles basic algorithms just as well, sometimes better.
