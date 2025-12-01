@@ -1,6 +1,6 @@
 ---
 title: "Probability Theory: Bayesian Statistics for A/B Testing in Go"
-date: 2024-01-18T10:00:00+03:00
+date: 2025-04-29T10:00:00+03:00
 draft: false
 author: "Ilya Brin"
 tags: ["golang", "statistics", "ab-testing", "bayesian", "math", "data-science", "probability"]
