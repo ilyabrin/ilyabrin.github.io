@@ -9,6 +9,8 @@ categories: ["Management"]
 
 Managing an IT team in Russia isn't just translating Western practices. It's a unique mix of Soviet legacy, post-Soviet adaptation, and modern approaches. Let's explore what works and what doesn't.
 
+<!--more-->
+
 ## Cultural Context
 
 ### Hierarchy vs Equality
