@@ -1,7 +1,6 @@
 ---
 title: "TLS 1.3: что изменилось и как мигрировать"
 date: 2025-08-08T20:00:00+01:00
-
 author: "Ilya Brin"
 categories: ['security', 'tls', 'cryptography']
 tags: ['tls', 'tls-1-3', 'security', 'https', 'cryptography', 'migration', 'ssl']
