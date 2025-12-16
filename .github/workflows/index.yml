@@ -1,0 +1,116 @@
+name: Index Posts to README
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "content/post/**/*.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  index-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Index posts and update README
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const SITE_URL = 'https://ilyabrin.github.io';
+
+          // Read all markdown files from content/post
+          const postsDir = 'content/post';
+          const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
+
+          // Group posts by base name
+          const postsMap = new Map();
+
+          files.forEach(file => {
+            const filePath = path.join(postsDir, file);
+            const content = fs.readFileSync(filePath, 'utf-8');
+            
+            // Extract frontmatter
+            const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+            if (!frontmatterMatch) return;
+            
+            const frontmatter = frontmatterMatch[1];
+            
+            // Check if draft
+            const draftMatch = frontmatter.match(/draft:\s*(true|false)/);
+            if (draftMatch && draftMatch[1] === 'true') return;
+            
+            // Extract title and date
+            const titleMatch = frontmatter.match(/title:\s*["'](.+?)["']/);
+            const dateMatch = frontmatter.match(/date:\s*(.+)/);
+            
+            if (!titleMatch || !dateMatch) return;
+            
+            const title = titleMatch[1];
+            const date = dateMatch[1].split('T')[0]; // Get YYYY-MM-DD
+            
+            // Detect language from filename
+            const langMatch = file.match(/\.(ru|en)\.md$/);
+            const lang = langMatch ? langMatch[1].toUpperCase() : 'EN';
+            
+            // Get base name (without language suffix)
+            const baseName = file.replace(/\.(ru|en)\.md$/, '');
+            
+            if (!postsMap.has(baseName)) {
+              postsMap.set(baseName, {
+                title: title,
+                date: date,
+                slug: baseName,
+                langs: new Set()
+              });
+            }
+            
+            postsMap.get(baseName).langs.add(lang);
+          });
+
+          // Convert to array and sort by date (newest first)
+          const posts = Array.from(postsMap.values())
+            .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+          // Generate README content
+          let readmeContent = '# Blog Posts Index\n\n';
+          readmeContent += '## Published Posts\n\n';
+
+          posts.forEach(post => {
+            const langs = Array.from(post.langs).sort().map(l => {
+              const langCode = l.toLowerCase();
+              const postUrl = `${SITE_URL}/${langCode}/post/${post.slug}/`;
+              return `[[${l}]](${postUrl})`;
+            }).join(' ');
+            readmeContent += `[${post.date}] - ${post.title} - ${langs}  `;
+          });
+
+          readmeContent += `\n---\n*Last updated: ${new Date().toISOString().split('T')[0]}*\n`;
+          readmeContent += `*Total posts: ${posts.length}*\n`;
+
+          // Write README
+          fs.writeFileSync('README.md', readmeContent, 'utf-8');
+
+          console.log(`✅ Indexed ${posts.length} posts to README.md`);
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 Auto-update README with posts index" && git push)
