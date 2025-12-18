@@ -2,7 +2,12 @@
 /public/
 /resources/_gen/
 /assets/jsconfig.json
+/.al**
+/.bl**
+/.cl**
+/.dl**
 hugo_stats.json
+.vscode/
 
 # Executable may be added to repository
 hugo.exe
