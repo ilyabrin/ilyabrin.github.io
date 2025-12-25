@@ -1,13 +1,11 @@
 ---
 title: "Graceful Shutdown in Go: Properly Stopping Services Under Load"
-date: 2024-01-20T10:00:00Z
+date: 2025-12-23T10:00:00Z
 draft: false
 tags: ["golang", "graceful-shutdown", "kubernetes", "production", "reliability"]
 categories: ["Go", "Production"]
 description: "Practical guide to implementing graceful shutdown in Go applications with examples for PostgreSQL, Redis, HTTP servers, and Kubernetes environments."
 ---
-
-# Graceful Shutdown in Go: Properly Stopping Services Under Load
 
 In production environments, especially in Kubernetes, services are constantly being stopped and started: deploying new versions, scaling, node switching. Improper shutdown leads to lost requests, unsent data, and desynchronized state.
 
@@ -19,6 +17,8 @@ Graceful shutdown is not just handling SIGTERM. It's a comprehensive termination
 - Sending all metrics and logs
 
 Let's explore how to implement this correctly.
+
+<!--more-->
 
 ## Basic Concept
 

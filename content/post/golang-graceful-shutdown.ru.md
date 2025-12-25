@@ -1,6 +1,6 @@
 ---
 title: "Graceful Shutdown в Go: корректная остановка сервиса под нагрузкой"
-date: 2024-01-20T10:00:00Z
+date: 2025-12-23T10:00:00Z
 draft: false
 tags: ["golang", "graceful-shutdown", "kubernetes", "production", "reliability"]
 categories: ["Go", "Production"]
@@ -17,6 +17,8 @@ Graceful shutdown - это не просто обработка SIGTERM. Это 
 - Отправку всех метрик и логов
 
 Давайте разберем, как реализовать это правильно.
+
+<!--more-->
 
 ## Базовая концепция
 
