@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - "content/post/**/*.md"
+      - ".github/workflows/index.yml"
   workflow_dispatch:
 
 permissions:
@@ -16,14 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Index posts and update README
         run: |
@@ -32,77 +33,88 @@ jobs:
           const path = require('path');
 
           const SITE_URL = 'https://ilyabrin.github.io';
+          const POSTS_DIR = 'content/post';
 
-          // Read all markdown files from content/post
-          const postsDir = 'content/post';
-          const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
+          function extractFrontmatter(content) {
+            const match = content.match(/^---\n([\s\S]*?)\n---/);
+            return match ? match[1] : null;
+          }
 
-          // Group posts by base name
+          function parseField(frontmatter, field, isQuoted = false) {
+            const pattern = isQuoted 
+              ? new RegExp(`${field}:\\s*["'](.+?)["']`)
+              : new RegExp(`${field}:\\s*(.+)`);
+            const match = frontmatter.match(pattern);
+            return match ? match[1] : null;
+          }
+
+          function processPost(file) {
+            const filePath = path.join(POSTS_DIR, file);
+            const content = fs.readFileSync(filePath, 'utf-8');
+            
+            const frontmatter = extractFrontmatter(content);
+            if (!frontmatter) return null;
+            
+            const isDraft = parseField(frontmatter, 'draft') === 'true';
+            if (isDraft) return null;
+            
+            const title = parseField(frontmatter, 'title', true);
+            const date = parseField(frontmatter, 'date');
+            
+            if (!title || !date) return null;
+            
+            const langMatch = file.match(/\.(ru|en)\.md$/);
+            const lang = langMatch ? langMatch[1].toUpperCase() : 'EN';
+            const baseName = file.replace(/\.(ru|en)\.md$/, '');
+            
+            return {
+              baseName,
+              title,
+              date: date.split('T')[0],
+              lang
+            };
+          }
+
+          function generateReadme(posts) {
+            let content = '# Blog Posts Index\n\n## Published Posts\n\n';
+            
+            posts.forEach(post => {
+              const langs = Array.from(post.langs).sort().map(l => {
+                const url = `${SITE_URL}/${l.toLowerCase()}/post/${post.slug}/`;
+                return `[[${l}]](${url})`;
+              }).join(' ');
+              content += `- **${post.date}** - ${post.title} ${langs}\n`;
+            });
+
+            content += `\n---\n*Last updated: ${new Date().toISOString().split('T')[0]}*  \n`;
+            content += `*Total posts: ${posts.length}*\n`;
+            
+            return content;
+          }
+
+          // Main logic
+          const files = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith('.md'));
           const postsMap = new Map();
 
           files.forEach(file => {
-            const filePath = path.join(postsDir, file);
-            const content = fs.readFileSync(filePath, 'utf-8');
-            
-            // Extract frontmatter
-            const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-            if (!frontmatterMatch) return;
-            
-            const frontmatter = frontmatterMatch[1];
-            
-            // Check if draft
-            const draftMatch = frontmatter.match(/draft:\s*(true|false)/);
-            if (draftMatch && draftMatch[1] === 'true') return;
-            
-            // Extract title and date
-            const titleMatch = frontmatter.match(/title:\s*["'](.+?)["']/);
-            const dateMatch = frontmatter.match(/date:\s*(.+)/);
-            
-            if (!titleMatch || !dateMatch) return;
-            
-            const title = titleMatch[1];
-            const date = dateMatch[1].split('T')[0]; // Get YYYY-MM-DD
-            
-            // Detect language from filename
-            const langMatch = file.match(/\.(ru|en)\.md$/);
-            const lang = langMatch ? langMatch[1].toUpperCase() : 'EN';
-            
-            // Get base name (without language suffix)
-            const baseName = file.replace(/\.(ru|en)\.md$/, '');
-            
-            if (!postsMap.has(baseName)) {
-              postsMap.set(baseName, {
-                title: title,
-                date: date,
-                slug: baseName,
+            const post = processPost(file);
+            if (!post) return;
+
+            if (!postsMap.has(post.baseName)) {
+              postsMap.set(post.baseName, {
+                title: post.title,
+                date: post.date,
+                slug: post.baseName,
                 langs: new Set()
               });
             }
-            
-            postsMap.get(baseName).langs.add(lang);
+            postsMap.get(post.baseName).langs.add(post.lang);
           });
 
-          // Convert to array and sort by date (newest first)
           const posts = Array.from(postsMap.values())
             .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-          // Generate README content
-          let readmeContent = '# Blog Posts Index\n\n';
-          readmeContent += '## Published Posts\n\n';
-
-          posts.forEach(post => {
-            const langs = Array.from(post.langs).sort().map(l => {
-              const langCode = l.toLowerCase();
-              const postUrl = `${SITE_URL}/${langCode}/post/${post.slug}/`;
-              return `[[${l}]](${postUrl})`;
-            }).join(' ');
-            readmeContent += `[${post.date}] - ${post.title} - ${langs}  `;
-          });
-
-          readmeContent += `\n---\n*Last updated: ${new Date().toISOString().split('T')[0]}*\n`;
-          readmeContent += `*Total posts: ${posts.length}*\n`;
-
-          // Write README
+          const readmeContent = generateReadme(posts);
           fs.writeFileSync('README.md', readmeContent, 'utf-8');
 
           console.log(`✅ Indexed ${posts.length} posts to README.md`);
