@@ -1,0 +1,3 @@
+<div class="code-tab" data-lang="{{ .Get "lang" }}" data-label="{{ .Get "label" | default (.Get "lang") }}">
+  {{ .Inner | markdownify }}
+</div>
