@@ -2,6 +2,7 @@
 
 ## Published Posts
 
+- **2026-05-04** - HTTP Server: Go vs Rust [[EN]](https://ilyabrin.github.io/en/post/http-server-go-vs-rust/) [[RU]](https://ilyabrin.github.io/ru/post/http-server-go-vs-rust/)
 - **2026-05-04** - WireGuard: The Most Elegant VPN Ever Built [[EN]](https://ilyabrin.github.io/en/post/wireguard-client-deep-dive/) [[RU]](https://ilyabrin.github.io/ru/post/wireguard-client-deep-dive/)
 - **2026-05-03** - Why Write Articles When Everything Has Already Been Written [[EN]](https://ilyabrin.github.io/en/post/writing-for-what/) [[RU]](https://ilyabrin.github.io/ru/post/writing-for-what/)
 - **2026-04-29** - LLM Quantization Types: a Cheat Sheet [[EN]](https://ilyabrin.github.io/en/post/llm-quantization-guide/) [[RU]](https://ilyabrin.github.io/ru/post/llm-quantization-guide/)
@@ -60,4 +61,4 @@
 
 ---
 *Last updated: 2026-05-04*  
-*Total posts: 55*
+*Total posts: 56*
