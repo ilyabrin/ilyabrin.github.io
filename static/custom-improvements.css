@@ -1,0 +1,514 @@
+/* ============================================
+   UX/UI Improvements for Ilya Brin's Blog
+   High Priority Quick Wins + Advanced Features
+   ============================================ */
+
+/* 1. SMOOTH SCROLL BEHAVIOR */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. READING EXPERIENCE ENHANCEMENT */
+article .content {
+  line-height: 1.7 !important;
+  font-size: 1.625rem !important;
+}
+
+article .content p {
+  margin-bottom: 1.5em;
+}
+
+/* 3. IMPROVED TYPOGRAPHY HIERARCHY */
+article .content h2 {
+  font-size: 1.5em !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+article .content h3 {
+  font-size: 1.5em !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.875rem !important;
+}
+
+article .content h4 {
+  font-size: 1.25em !important;
+  margin-top: 1.75rem !important;
+  color: #5c8b59;
+}
+
+article .content h5 {
+  font-size: 1.5em !important;
+  margin-top: 1.5rem !important;
+}
+
+article .content h6 {
+  font-size: 1.1em !important;
+  font-weight: 600;
+  margin-top: 1.5rem !important;
+}
+
+/* 4. ENHANCED FOCUS STATES FOR ACCESSIBILITY */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #5c8b59;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 5. SMOOTH TRANSITIONS */
+a,
+button,
+.tags a,
+.languages a {
+  transition: all 0.2s ease-in-out;
+}
+
+article .content a:hover {
+  color: #4a7c47 !important;
+}
+
+/* 6. CODE BLOCKS WITH LINE NUMBERS */
+article .content pre {
+  border-radius: 6px;
+  /* padding: 1.5em !important; */
+  /* margin: 1.5em 0; */
+  background-color: #f6f8fa !important;
+  border: 1px solid #e1e4e8;
+  overflow-x: auto;
+  position: relative;
+  counter-reset: line;
+}
+
+/* Line numbers for code blocks */
+article .content pre code {
+  display: block;
+  counter-reset: line;
+}
+
+article .content pre code .line {
+  counter-increment: line;
+  display: block;
+}
+
+article .content pre code .line::before {
+  content: counter(line);
+  display: inline-block;
+  width: 2.5em;
+  /* padding-right: 1em; */
+  /* margin-right: 1em; */
+  text-align: right;
+  color: #999;
+  border-right: 1px solid #ddd;
+  user-select: none;
+}
+
+/* Alternative: Simple line numbers using Hugo's built-in highlighting */
+.highlight pre {
+  position: relative;
+  /* padding-left: 3.5em !important; */
+}
+
+.highlight .ln {
+  display: inline-block;
+  width: 2.5em;
+  text-align: right;
+  margin-right: 1em;
+  color: #999;
+  user-select: none;
+}
+
+.highlight .lntd:first-child {
+  padding-right: 0.5em;
+}
+
+.highlight .lntd:first-child pre {
+  padding-left: 0.5em;
+  padding-right: 0;
+}
+
+article .content code {
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+article .content p code,
+article .content li code {
+  background-color: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  border: 1px solid #e1e4e8;
+  font-size: 0.875em;
+}
+
+/* 7. IMPROVED BLOCKQUOTE STYLING */
+article .content blockquote {
+  border-left: 4px solid #5c8b59 !important;
+  background-color: #f9f9f9 !important;
+  padding: 1.5em 2em !important;
+  margin: 2em 0 !important;
+  font-style: italic;
+}
+
+article .content blockquote p:first-child::before {
+  content: '"';
+  font-size: 2em;
+  color: #5c8b59;
+  margin-right: 0.1em;
+  line-height: 0;
+  vertical-align: -0.4em;
+}
+
+/* 8. READING PROGRESS BAR */
+#reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #5c8b59 0%, #4a7c47 100%);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+/* 9. BACK TO TOP BUTTON */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #5c8b59;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top:hover {
+  background-color: #4a7c47;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 10. ENHANCED TABLE OF CONTENTS */
+article .content #TableOfContents {
+  background: #f9f9f9;
+  border-left: 4px solid #5c8b59 !important;
+  padding: 1.5rem !important;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+article .content #TableOfContents a {
+  color: #333 !important;
+  text-decoration: none;
+  display: block;
+  padding: 0.25em 0;
+}
+
+article .content #TableOfContents a:hover {
+  color: #5c8b59 !important;
+  padding-left: 0.5em;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 11. LAZY LOADING IMAGES - Visual Enhancement */
+article .content img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+}
+
+article .content img:not([src]),
+article .content img[src=""] {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+article .content img[data-src] {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+article .content img.loaded,
+article .content img[src]:not([data-src]) {
+  background: none;
+  animation: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Fade-in effect for lazy loaded images */
+article .content img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+article .content img.loaded,
+article .content img[src]:not([data-src]) {
+  opacity: 1;
+}
+
+/* 12. BETTER TOUCH TARGETS FOR MOBILE */
+@media (max-width: 800px) {
+  .tags .links a,
+  .languages .links a,
+  footer .container ul a {
+    padding: 0.75em 0.5em;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  article .content {
+    font-size: 1rem !important;
+    padding: 1.5em !important;
+  }
+
+  article .content h1 {
+    font-size: 1.6em !important;
+  }
+
+  article .content h2 {
+    font-size: 1.45em !important;
+  }
+
+  article .content h3 {
+    font-size: 1.3em !important;
+  }
+
+  #back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+/* 13. IMPROVED META SECTION READABILITY */
+article .content .meta {
+  font-size: 0.875em !important;
+  color: #666 !important;
+}
+
+article .content .meta a:hover {
+  color: #5c8b59 !important;
+}
+
+/* 14. BETTER LIST STYLING */
+article .content ul,
+article .content ol {
+  margin: 1.5em 0;
+  padding-left: 2em;
+}
+
+article .content li {
+  margin-bottom: 0.75em;
+  line-height: 1.7;
+}
+
+/* 15. IMAGE CAPTIONS */
+article .content figure {
+  margin: 2em 0;
+}
+
+article .content figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 0.5em;
+}
+
+/* 16. IMPROVED ARTICLE CARD HOVER EFFECT */
+article {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+article:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 17. SKIP TO CONTENT LINK (Accessibility) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #5c8b59;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  z-index: 10000;
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #4a7c47;
+  outline-offset: 2px;
+}
+
+/* 18. PRINT STYLES */
+@media print {
+  article {
+    box-shadow: none !important;
+  }
+
+  article:before,
+  article:after {
+    display: none !important;
+  }
+
+  #back-to-top,
+  #reading-progress-bar,
+  nav,
+  footer,
+  .skip-link {
+    display: none !important;
+  }
+
+  article .content a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  article .content code {
+    page-break-inside: avoid;
+  }
+}
+
+/* 19. SELECTION STYLING */
+::selection {
+  background-color: #5c8b59;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #5c8b59;
+  color: white;
+}
+
+/* 20. IMPROVED FOOTER LINKS */
+footer .container ul a {
+  border-radius: 3px;
+  padding: 0.5em 0;
+}
+
+footer .container ul a:hover {
+  background-color: rgba(92, 139, 89, 0.05);
+}
+
+/* 21. OFFLINE INDICATOR */
+.offline-indicator {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  background: #ff9800;
+  color: white;
+  padding: 0.75em 1.25em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.offline-indicator.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.offline-indicator::before {
+  content: "📡 ";
+}
+
+/* 22. FONT LOADING OPTIMIZATION - Performance hint */
+body {
+  font-display: swap;
+}
+
+/* 23. CODE TABS - Multi-language code switcher */
+.code-tabs {
+  margin: 1.5em 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-tabs-nav {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.code-tabs-nav button {
+  padding: 8px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Fira Code", monospace;
+  font-size: 0.82em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.code-tabs-nav button:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.code-tabs-nav button.active {
+  color: #fff;
+  border-bottom-color: #e74c3c;
+}
+
+.code-tab {
+  display: none;
+}
+
+.code-tab.active {
+  display: block;
+}
+
+.code-tab > div > pre,
+.code-tab pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
