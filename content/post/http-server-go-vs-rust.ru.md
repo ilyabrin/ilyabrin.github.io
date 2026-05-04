@@ -1,6 +1,6 @@
 ---
 title: "HTTP-сервер: Go vs Rust"
-date: 2026-05-04T12:00:00+03:00
+date: 2026-05-04T00:01:00+03:00
 draft: false
 author: "Ilya Brin"
 tags: ["go", "rust", "http", "backend"]
