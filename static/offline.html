@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Ilya Brin's Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1d1f38 0%, #2D3642 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: #5c8b59;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #4a7c47;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(92, 139, 89, 0.3);
+        }
+
+        .cached-pages {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cached-pages h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .cached-pages ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cached-pages li {
+            margin: 0.5rem 0;
+        }
+
+        .cached-pages a {
+            color: #5c8b59;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .cached-pages a:hover {
+            color: #4a7c47;
+            text-decoration: underline;
+        }
+
+        .status {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📡</div>
+        <h1>You're Offline</h1>
+        <p>
+            It looks like you've lost your internet connection.
+            Don't worry - you can still access previously visited pages from the cache.
+        </p>
+        <button class="button" onclick="retry()">Try Again</button>
+
+        <div class="cached-pages" id="cachedPages" style="display: none;">
+            <h2>📚 Available Offline Pages</h2>
+            <ul id="pageList"></ul>
+        </div>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <script>
+        function retry() {
+            window.location.reload();
+        }
+
+        // Check if we're actually online
+        function checkConnection() {
+            const status = document.getElementById('status');
+            if (navigator.onLine) {
+                status.textContent = '🟢 Connection detected! Click "Try Again" to continue.';
+                status.style.color = '#5c8b59';
+            } else {
+                status.textContent = '🔴 Still offline. Please check your connection.';
+                status.style.opacity = '0.7';
+            }
+        }
+
+        // List cached pages
+        async function listCachedPages() {
+            if ('caches' in window) {
+                try {
+                    const cacheNames = await caches.keys();
+                    const cache = await caches.open(cacheNames[0]);
+                    const requests = await cache.keys();
+
+                    const pageList = requests
+                        .map(req => req.url)
+                        .filter(url => {
+                            return url.includes(window.location.origin) &&
+                                   !url.includes('offline.html') &&
+                                   (url.endsWith('/') || url.endsWith('.html'));
+                        })
+                        .slice(0, 10); // Show max 10 pages
+
+                    if (pageList.length > 0) {
+                        const cachedPagesDiv = document.getElementById('cachedPages');
+                        const ul = document.getElementById('pageList');
+
+                        pageList.forEach(url => {
+                            const li = document.createElement('li');
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.textContent = url.replace(window.location.origin, '').replace('/index.html', '/') || 'Home';
+                            li.appendChild(a);
+                            ul.appendChild(li);
+                        });
+
+                        cachedPagesDiv.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Error listing cached pages:', error);
+                }
+            }
+        }
+
+        // Listen for online/offline events
+        window.addEventListener('online', () => {
+            checkConnection();
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+
+        window.addEventListener('offline', checkConnection);
+
+        // Initial check
+        checkConnection();
+        listCachedPages();
+
+        // Keyboard shortcut: R to retry
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') {
+                retry();
+            }
+        });
+    </script>
+</body>
+</html>

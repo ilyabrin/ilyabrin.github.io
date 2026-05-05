@@ -1,3 +1,13 @@
+<!-- Service Worker registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .catch(function(err) { console.warn('[SW] Registration failed:', err); });
+    });
+  }
+</script>
+
 <!-- Reading progress bar -->
 <div id="reading-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
