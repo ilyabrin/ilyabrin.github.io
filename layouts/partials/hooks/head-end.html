@@ -9,6 +9,28 @@
 </script>
 
 <style>
+  /* ── Reading progress bar ── */
+  #reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: #5c8b59;
+    z-index: 10000;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+  #reading-progress::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4));
+  }
+
   /* ── Dark theme toggle button ── */
   #theme-toggle {
     position: absolute;
