@@ -1,6 +1,6 @@
 ---
 title: "Зачем писать код, если это лучше делает AI"
-date: 2026-05-04T12:00:00+03:00
+date: 2026-05-05T12:00:00+03:00
 draft: false
 author: "Ilya Brin"
 tags: ["ai", "career", "productivity", "mindset", "future"]
