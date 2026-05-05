@@ -1,4 +1,28 @@
-<!--
-    1. Copy this file into your site root's "layouts/partials/hooks" folder
-    2. Add the necessary code to integrate with third-party services or to customize your site further
--->
+<script>
+  (function() {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    var label = btn.querySelector('.toggle-label');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (label) label.textContent = label.dataset.dark || 'Light';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (label) label.textContent = label.dataset.light || 'Dark';
+      }
+    }
+
+    // Sync label with current state on load
+    var current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'dark' : 'light');
+
+    btn.addEventListener('click', function() {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script>
