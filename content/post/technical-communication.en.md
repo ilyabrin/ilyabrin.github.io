@@ -36,7 +36,7 @@ The problem isn't that the manager is stupid. The problem is you're speaking dif
 - "Cache will speed up loading to 100 milliseconds"
 - "We'll use Redis for this"
 
-See the difference? First the problem and its business impact, then the solution, and only at the end — the technology.
+See the difference? First the problem and its business impact, then the solution, and only at the end - the technology.
 
 ## The Three-Level Rule
 
@@ -60,7 +60,7 @@ You're in a meeting with a manager or product manager. You have 5 minutes to exp
 **Example:**
 > **Problem:** The database can't handle the load. Every request goes to the database, it's slow.
 >
-> **Solution:** Added cache between application and database. Popular data is stored in memory — fast access.
+> **Solution:** Added cache between application and database. Popular data is stored in memory - fast access.
 >
 > **Result:** 50x speedup, less load on database.
 >
@@ -103,13 +103,13 @@ Complex concepts through simple analogies:
 
 **Bad:** "Using in-memory key-value store to reduce latency"
 
-**Good:** "Imagine a library. Going to the archive every time is slow. We keep popular books at the desk — quick access."
+**Good:** "Imagine a library. Going to the archive every time is slow. We keep popular books at the desk - quick access."
 
 ### Race Condition
 
 **Bad:** "Concurrent access to shared memory without synchronization"
 
-**Good:** "Two people simultaneously edit a document. One saves, the second saves — the first person's changes are lost."
+**Good:** "Two people simultaneously edit a document. One saves, the second saves - the first person's changes are lost."
 
 ## Visualization
 
@@ -178,11 +178,11 @@ Replace technical terms with understandable ones:
 
 **Good:**
 
-"**Problem:** When a user places an order, we need to update inventory, send email, add bonus points. Currently everything happens sequentially — slow and unreliable.
+"**Problem:** When a user places an order, we need to update inventory, send email, add bonus points. Currently everything happens sequentially - slow and unreliable.
 
 **Solution:** Breaking into independent steps. Order is created quickly, everything else happens in background. If email fails, order isn't canceled.
 
-**Result:** Order created in 100ms instead of 2 seconds. System is more reliable — failure in one part doesn't break everything."
+**Result:** Order created in 100ms instead of 2 seconds. System is more reliable - failure in one part doesn't break everything."
 
 ### Explaining a Bug
 
@@ -335,7 +335,7 @@ Choose a complex concept. Explain it so someone without technical background und
 
 ### Exercise 3: Diagram
 
-Draw system architecture. If it takes more than 5 minutes to explain — simplify.
+Draw system architecture. If it takes more than 5 minutes to explain - simplify.
 
 ## Conclusion
 
