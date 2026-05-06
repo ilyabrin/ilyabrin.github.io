@@ -8,6 +8,7 @@
 - **2026-05-04** - WireGuard: The Most Elegant VPN Ever Built [[EN]](https://ilyabrin.github.io/en/post/wireguard-client-deep-dive/) [[RU]](https://ilyabrin.github.io/ru/post/wireguard-client-deep-dive/)
 - **2026-05-03** - Why Write Articles When Everything Has Already Been Written [[EN]](https://ilyabrin.github.io/en/post/writing-for-what/) [[RU]](https://ilyabrin.github.io/ru/post/writing-for-what/)
 - **2026-04-29** - LLM Quantization Types: a Cheat Sheet [[EN]](https://ilyabrin.github.io/en/post/llm-quantization-guide/) [[RU]](https://ilyabrin.github.io/ru/post/llm-quantization-guide/)
+- **2026-01-01** - How to Learn Any Programming Language: Techniques and Tricks [[EN]](https://ilyabrin.github.io/en/post/how-to-learn-any-language/) [[RU]](https://ilyabrin.github.io/ru/post/how-to-learn-any-language/)
 - **2025-12-31** - How to Stop Worrying About Your Code and Become a 10x Developer [[EN]](https://ilyabrin.github.io/en/post/10x-developer-mindset/) [[RU]](https://ilyabrin.github.io/ru/post/10x-developer-mindset/)
 - **2025-12-27** - Go Runtime: How GC Impacts P99 Latency in High-Load APIs [[EN]](https://ilyabrin.github.io/en/post/go-gc-p99-latency-optimization/) [[RU]](https://ilyabrin.github.io/ru/post/go-gc-p99-latency-optimization/)
 - **2025-12-23** - Graceful Shutdown in Go: Properly Stopping Services Under Load [[EN]](https://ilyabrin.github.io/en/post/golang-graceful-shutdown/) [[RU]](https://ilyabrin.github.io/ru/post/golang-graceful-shutdown/)
@@ -63,4 +64,4 @@
 
 ---
 *Last updated: 2026-05-06*  
-*Total posts: 58*
+*Total posts: 59*
