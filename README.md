@@ -17,6 +17,7 @@
 - **2025-11-29** - Multitasking in Linux: Preemptive vs Non-Preemptive [[EN]](https://ilyabrin.github.io/en/post/linux-multitasking/) [[RU]](https://ilyabrin.github.io/ru/post/linux-multitasking/)
 - **2025-11-19** - Programming in the AI Era: Rethinking the Profession [[EN]](https://ilyabrin.github.io/en/post/coding-with-ai-era/) [[RU]](https://ilyabrin.github.io/ru/post/coding-with-ai-era/)
 - **2025-11-12** - Technical Communication: How to Explain Complex Things Simply [[EN]](https://ilyabrin.github.io/en/post/technical-communication/) [[RU]](https://ilyabrin.github.io/ru/post/technical-communication/)
+- **2025-11-12** - Technical Documentation: Writing So People Actually Read It [[EN]](https://ilyabrin.github.io/en/post/technical-documentation/) [[RU]](https://ilyabrin.github.io/ru/post/technical-documentation/)
 - **2025-10-20** - Quantum Computing Basics: Qubits and Superposition in Go [[EN]](https://ilyabrin.github.io/en/post/quantum-computing-basics-go/) [[RU]](https://ilyabrin.github.io/ru/post/quantum-computing-basics-go/)
 - **2025-10-08** - Technical Management: How to Sync Development and Business [[EN]](https://ilyabrin.github.io/en/post/technical-management-sync/) [[RU]](https://ilyabrin.github.io/ru/post/technical-management-sync/)
 - **2025-10-05** - The Hiring Circus: FAANG Interviews for Intern Salaries [[EN]](https://ilyabrin.github.io/en/post/hiring-circus-russia/) [[RU]](https://ilyabrin.github.io/ru/post/hiring-circus-russia/)
@@ -64,4 +65,4 @@
 
 ---
 *Last updated: 2026-05-06*  
-*Total posts: 59*
+*Total posts: 60*
