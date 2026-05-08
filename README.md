@@ -64,5 +64,5 @@
 - **2024-01-21** - How to Avoid Merge Conflicts: Practical Team Guide [[EN]](https://ilyabrin.github.io/en/post/git-merge-conflicts-guide/) [[RU]](https://ilyabrin.github.io/ru/post/git-merge-conflicts-guide/)
 
 ---
-*Last updated: 2026-05-06*  
+*Last updated: 2026-05-08*  
 *Total posts: 60*
